@@ -1,75 +1,15 @@
-# Nuxt Minimal Starter
+# review
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+- store kullanılmamış store kullanılacak
+- componentler çok dağınık ve önerilen yapıya uygun değil
+- componentler fetch işlemi barındırmamalıdır verileri çeken fonkisyonları barındırmak store dosyasının, fonksiyonu çağırıp çalıştırmak ise sayfanın görevidir
+- eslint kurallarından no-undef kapatılabilir ve typescript: true yapılmalı
+- nuxtın auto-import özelliğinden faydalanan dosyalar import edilmemeli
+- nuxt/ui ın verimli kullanılması için app/ dosyası içerisinde app.config.ts eklenmeli
+- film componentlerinin tıklanma alanı çok büyük UX e zarar veriyor
+- eğer sayfalar arası yönlendirme slidover ile yapılacaksa bir sayfaya geçildiği zaman slideover otomatik kapatılmalı ve bu slideoverı açan buton header içerisinde bulunmalı
 
-## Setup
-
-Make sure to install dependencies:
-
-```bash
-# npm
-npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+# En Önemliler
+- store konusunu hızlıca hallet projende pinia var ama asla kullanılmamış.
+- componentler çok dağınık ve yanlış kullanılmış
+- bg-color değişiklikleri ve etrafta yazan text-colorlar gibi tasarıma çok fazla müdahale var. Bunlar olmamalı nuxt/ui kullanılmalı
