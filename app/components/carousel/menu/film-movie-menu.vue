@@ -13,7 +13,7 @@ function goToTVShows() {
 </script>
 
 <template>
-  <USlideover side="left" title="NuxtFlix Menü" description="Filmler ve TV Şovları NuxtFlix'te!">
+  <USlideover side="left" title="NuxtFlix Menü" description="Aşağıdan dilediğiniz türü seçebilirsiniz. Filmler, TV Şovları ve çok daha fazlası şimdi NuxtFlix'te !">
     <UButton label="Menü" color="success" variant="solid" class="font-semibold w-30 flex justify-center items-center" size="xl" />
 
     <template #body>

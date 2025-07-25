@@ -1,24 +1,36 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
 import type { Media, PageResult } from '~/types'
 
 const movies = ref<Media[]>([])
 const tvShows = ref<Media[]>([])
 
 const config = useRuntimeConfig()
+const router = useRouter()
 
 onMounted(async () => {
   const movieRes = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${config.public.tmdbApiKey}`)
   const movieJson: PageResult<Media> = await movieRes.json()
-  movies.value = movieJson.results
+  movies.value = movieJson.results.map(item => ({
+    ...item,
+    media_type: 'movie',
+  }))
 
   const tvRes = await fetch(`https://api.themoviedb.org/3/tv/popular?api_key=${config.public.tmdbApiKey}`)
   const tvJson: PageResult<Media> = await tvRes.json()
-  tvShows.value = tvJson.results
+  tvShows.value = tvJson.results.map(item => ({
+    ...item,
+    media_type: 'tv',
+  }))
 })
 
 function getFullImagePath(path: string | null | undefined): string {
   return path ? `https://image.tmdb.org/t/p/w500${path}` : '/placeholder.jpg'
+}
+
+function goToDetail(item: Media) {
+  router.push(`/${item.media_type}/${item.id}`)
 }
 </script>
 
@@ -32,7 +44,10 @@ function getFullImagePath(path: string | null | undefined): string {
         :ui="{ item: 'basis-1/6' }"
         v-slot="{ item }"
       >
-        <div class="flex flex-col items-center">
+        <div
+          class="flex flex-col items-center cursor-pointer"
+          @click="goToDetail(item)"
+        >
           <img
             :src="getFullImagePath(item.poster_path)"
             alt="poster"
@@ -56,7 +71,10 @@ function getFullImagePath(path: string | null | undefined): string {
         :ui="{ item: 'basis-1/6' }"
         v-slot="{ item }"
       >
-        <div class="flex flex-col items-center">
+        <div
+          class="flex flex-col items-center cursor-pointer"
+          @click="goToDetail(item)"
+        >
           <img
             :src="getFullImagePath(item.poster_path)"
             alt="poster"
