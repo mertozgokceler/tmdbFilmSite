@@ -6,7 +6,8 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
   runtimeConfig: {
     public: {
-      tmdbApiKey: process.env.TMDB_API_KEY,
+      apiKey: process.env.NUXT_PUBLIC_TMDB_API_KEY,
+      apiUrl: process.env.NUXT_PUBLIC_API_URL,
     },
   },
 })

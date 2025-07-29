@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import Header from '~/components/carousel/header/header.vue'
-import FilmMovieMenu from '~/components/carousel/menu/film-movie-menu.vue'
+import FilmMovieMenu from '~/components/media/film-movie-menu.vue'
 </script>
 
 <template>
@@ -26,7 +25,7 @@ import FilmMovieMenu from '~/components/carousel/menu/film-movie-menu.vue'
       </h1>
 
       <div class="absolute right-4 flex items-center space-x-3">
-        <Header />
+        <AppHeader />
       </div>
     </div>
 
@@ -37,7 +36,7 @@ import FilmMovieMenu from '~/components/carousel/menu/film-movie-menu.vue'
       <slot />
     </main>
 
-    <footer class="bg-orange-400 text-zinc-950 font-semibold text-center py-2 border-t border-red-200">
+    <footer class="bg-orange-400 text-secondary-950 font-semibold text-center py-1 border-t border-red-200">
       © 2025 NuxtFlix. Made with ❤️ by Mert Özgökçeler.
     </footer>
   </div>

@@ -1,5 +1,3 @@
-<script setup lang="ts"></script>
-
 <template>
   <div class="flex items-center gap-3 mr-4">
     <UButton
