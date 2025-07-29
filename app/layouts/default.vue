@@ -1,43 +1,37 @@
 <script setup lang="ts">
-import FilmMovieMenu from '~/components/media/film-movie-menu.vue'
+import { MediaMenuMainMenu } from '#components'
 </script>
 
 <template>
   <Head>
-    <title>NuxtFlix</title>
+    <title>Mertflix | En popüler filmler, tv şovları ve çok daha fazlası...</title>
   </Head>
 
   <div class="h-screen flex flex-col text-white dark:bg-zinc-800 light:bg-zinc-300">
-    <div class="w-full p-6 bg-zinc-700 flex items-center relative">
-      <div class="absolute left-4 flex items-center">
+    <div class="w-full p-4 bg-zinc-700 relative flex items-center justify-between">
+      <div class="z-10">
+        <MediaMenuMainMenu />
+      </div>
+
+      <div class="absolute left-1/2 transform -translate-x-1/2 z-0">
         <img
-          src="~/assets/css/icon-green.svg"
-          alt="İcon Bulunamadı"
-          class="w-[90px] h-[100px] object-contain"
+          src="~/assets/css/mertflix3.png"
+          alt="Logo"
+          class="w-[180px] h-[180px] object-contain"
         >
       </div>
 
-      <h1
-        class="mx-auto text-3xl font-bold text-white"
-        style="font-family: Verdana, Geneva, Tahoma, sans-serif;"
-      >
-        NuxtFlix
-      </h1>
-
-      <div class="absolute right-4 flex items-center space-x-3">
+      <div class="z-10">
         <AppHeader />
       </div>
     </div>
 
-    <div class="px-9 py-5">
-      <FilmMovieMenu />
-    </div>
-    <main class="flex-1 overflow-auto p-4">
+    <main class="flex-1 overflow-auto px-9 py-5">
       <slot />
     </main>
 
     <footer class="bg-orange-400 text-secondary-950 font-semibold text-center py-1 border-t border-red-200">
-      © 2025 NuxtFlix. Made with ❤️ by Mert Özgökçeler.
+      © 2025 Mertflix. Made with ❤️ by Mert Özgökçeler.
     </footer>
   </div>
 </template>

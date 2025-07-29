@@ -1,9 +1,9 @@
 <template>
   <div class="flex items-center gap-3 mr-4">
     <UButton
-      class="px-5 py-3 font-bold bg-emerald-400 hover:bg-slate-400 flex items-center justify-center rounded-full text-center"
-      label=""
       :icon="isDark ? 'lucide:sun' : 'lucide:moon'"
+      class="rounded-full"
+      size="xl"
       @click="toggleTheme"
     />
 
