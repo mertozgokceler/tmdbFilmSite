@@ -1,33 +1,55 @@
 <script setup lang="ts">
-import type { MediaType } from '~/types'
-import { computed } from 'vue'
+import type { Media, MediaType } from '~/types'
+import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
+const media = ref<Media | null>(null)
+const loading = ref(true)
+const error = ref<string | null>(null)
 
-const type = computed(() => {
-  const t = route.params.type as string
-  return t === 'movie' || t === 'tv' ? (t as MediaType) : null
-})
+async function fetchMedia() {
+  loading.value = true
+  error.value = null
 
-const id = computed(() => {
-  return route.params.id
-})
+  try {
+    const type = route.params.type as MediaType
+    const id = route.params.id as string
+
+    const result = await $fetch<Media>('/api/tmdb/details', {
+      query: { type, id },
+    })
+
+    media.value = result
+  }
+  catch (err) {
+    console.error('Veri alınamadı:', err)
+    error.value = 'Veri alınırken bir hata oluştu.'
+  }
+  finally {
+    loading.value = false
+  }
+}
+
+onMounted(fetchMedia)
 </script>
 
 <template>
   <div class="p-6">
-    <template v-if="type && id">
-      <h1 class="text-2xl font-bold mb-2 capitalize light:text-secondary-600">
-        {{ type }} detay sayfası
-      </h1>
-      <p class="text-lg light:text-secondary-600 font-semibold">
-        ID: {{ id }}
+    <template v-if="loading">
+      <p class="text-white">
+        Yükleniyor...
       </p>
     </template>
 
-    <div v-else class="text-red-500 font-semibold">
-      Geçersiz içerik türü veya ID!
-    </div>
+    <template v-else-if="error">
+      <p class="text-red-500">
+        {{ error }}
+      </p>
+    </template>
+
+    <template v-else-if="media">
+      <MediaDetails :media="media" />
+    </template>
   </div>
 </template>

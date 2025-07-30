@@ -43,7 +43,7 @@ function getFullImagePath(path: string | null | undefined): string {
           <p class="text-sm text-secondary-400 light:text-secondary-600 font-semibold">
             {{ item.release_date || item.first_air_date }}
           </p>
-          <label>Derece : {{ (item.vote_average / 2).toFixed(1) }} / 5</label>
+          <label class="light:text-secondary-600 font-semibold">Derece : {{ (item.vote_average / 2).toFixed(1) }} / 5</label>
           <MediaCarouselRating :rating="item.vote_average" class="mt-1" />
         </div>
       </UCarousel>
@@ -82,7 +82,7 @@ function getFullImagePath(path: string | null | undefined): string {
           <p class="text-sm text-secondary-400 light:text-secondary-600 font-semibold">
             {{ item.first_air_date || item.release_date }}
           </p>
-          <label>Derece : {{ (item.vote_average / 2).toFixed(1) }} / 5</label>
+          <label class="light:text-secondary-600 font-semibold">Derece : {{ (item.vote_average / 2).toFixed(1) }} / 5</label>
           <MediaCarouselRating :rating="item.vote_average" class="mt-1" />
         </div>
       </UCarousel>
